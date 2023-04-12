@@ -1,0 +1,2 @@
+https://realpython.com/linear-regression-in-python/
+https://realpython.com/run-python-scripts/
