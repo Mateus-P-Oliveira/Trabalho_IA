@@ -3,3 +3,4 @@ https://realpython.com/run-python-scripts/
 https://datasetsearch.research.google.com/
 https://www.kaggle.com/datasets/harrimansaragih/dummy-advertising-and-sales-data?resource=download --Database de Sales
 https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data --Climate Change Database
+https://docs.python.org/3/library/csv.html
