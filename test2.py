@@ -1,6 +1,10 @@
 import pandas as pd
 import numpy as np
 import seaborn as sns
+import matplotlib.pyplot as plt
+
+
+
 
 from sklearn.linear_model import LinearRegression
 df = pd.read_csv('GlobalTemperatures.csv')
@@ -28,5 +32,9 @@ model = LinearRegression().fit(x, y)
 #sns.histplot(model)
 r_sq = model.score(x, y)
 print(f"coefficient of determination: {r_sq}")
+plt.scatter(x, y)
+plt.show()
+
+
 #Fazer a media mensal  já tem
 #Para trabalhar com meses ao inves de variação diaria 
