@@ -15,12 +15,16 @@ TemperatureColumn = df['LandAverageTemperature']
     #return 10000*DateColumn.year + 100*DateColumn.month + DateColumn.day
 
 tmp = DateColumn.str.split('-')
-DateColumn = (tmp.str[0]+tmp.str[1]+tmp.str[2]).astype(int)
+DateColumn = (tmp.str[2]+tmp.str[1]+tmp.str[0]).astype(int)
 TemperatureColumn = TemperatureColumn.fillna(0)
 #print(DateColumn)
 #print(TemperatureColumn)
 #reshape((-1, 1))
 #model = LinearRegression()
+x1 =DateColumn.to_numpy()
+y1= TemperatureColumn.to_numpy()
+#plt.scatter(x1, y1)
+#plt.show()
 x= DateColumn.to_numpy().reshape((-1,1))
 y= TemperatureColumn.to_numpy()
 
