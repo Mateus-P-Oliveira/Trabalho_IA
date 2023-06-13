@@ -9,3 +9,21 @@ https://www.w3schools.com/python/python_ml_train_test.asp
 https://towardsdatascience.com/how-to-build-your-first-machine-learning-model-in-python-e70fd1907cdd
 https://scikit-learn.org/stable/auto_examples/linear_model/plot_ols.html
 https://stackoverflow.com/questions/27652686/python-what-does-for-x-in-a1-mean
+
+
+
+--Link Correção
+https://medium.com/analytics-vidhya/applying-linear-regression-on-a-weather-data-set-e84901120f88
+
+--Link com varios dados
+https://towardsdatascience.com/weather-forecasting-with-machine-learning-using-python-55e90c346647
+
+
+---O que falta fazer  no T2
+A. Ok
+B. Falta mudar o codigo
+C. Falta
+D. Falta 
+E. Falta
+F. Mais ou menos feito
+G. Falta
