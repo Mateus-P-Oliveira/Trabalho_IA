@@ -39,7 +39,7 @@ Y = X.tolist()
 X1 = X.index.tolist()
 
 #------------------------------
-plt.xlabel("Ano")
+plt.xlabel("Mes")
 plt.ylabel("Temperatura Celsius")
 x = np.array(X1)
 y = np.array(Y)
@@ -89,3 +89,156 @@ plt.title('Predicitons vs Actual')
 plt.legend()
 plt.show()
 
+
+#Fazer para Temperatura max da terra 
+df = pd.read_csv('GlobalTemperatures.csv',parse_dates=['date'])
+DateColumn = df['date']
+df = df[df['LandMaxTemperature'].notna()] #Retina os NaN da temperatura
+df_columns = df.columns #Pega o nome das colunas
+TemperatureColumn = df['LandMaxTemperature']
+columns = df.columns #Faz uma lista com as colunas
+
+X =df.groupby(df.date.dt.year)['LandMaxTemperature'].mean()
+Y = X.tolist()
+X1 = X.index.tolist()
+
+x = np.array(X1)
+y = np.array(Y)
+
+xreshape=x.reshape(-1,1)
+
+x_train, x_test, y_train, y_test = train_test_split(xreshape, y, test_size=0.2, random_state=85) #Novo metodo de treino
+
+regr = linear_model.LinearRegression()
+regr.fit(x_train, y_train)
+y_pred = regr.predict(x_test)
+print("Coefficients: \n", regr.coef_)
+
+# Mean Squred Error
+mse = mean_squared_error(y_test, y_pred)
+print('Mean squared error(Testing) :', round(mse, 4))
+
+# Root Mean Squared Error
+rmsq = sqrt(mean_squared_error(y_test, y_pred))
+print('Root mean squared error(Testing) :', round(rmsq, 4))
+
+
+plt.scatter(x,y,color="orange")
+plt.plot(x_test, y_pred, color="blue", linewidth=1)
+plt.xlabel("Ano")
+plt.ylabel("Temperatura Maxima Celsius")
+future_predictions = regr.predict(dateList)
+print("Future Predictions: \n",future_predictions)
+plt.plot(dateList,future_predictions,color="red", linewidth=1)
+plt.show()
+
+sns.set(rc={'figure.figsize':(20,10)}) # O quanto a temperatura esperada varia da temperatura media
+plt.plot(y_pred[:200], label='Predicted', color='blue')
+plt.plot(y_test[:200], label='Actual', color='red')
+plt.xlabel('x - axis')
+plt.ylabel('y - axis')
+plt.title('Predicitons vs Actual')
+plt.legend()
+plt.show()
+
+#Temperatura min da terra
+df = pd.read_csv('GlobalTemperatures.csv',parse_dates=['date'])
+DateColumn = df['date']
+df = df[df['LandMinTemperature'].notna()] #Retina os NaN da temperatura
+df_columns = df.columns #Pega o nome das colunas
+TemperatureColumn = df['LandMinTemperature']
+columns = df.columns #Faz uma lista com as colunas
+
+X =df.groupby(df.date.dt.year)['LandMinTemperature'].mean()
+Y = X.tolist()
+X1 = X.index.tolist()
+
+x = np.array(X1)
+y = np.array(Y)
+
+xreshape=x.reshape(-1,1)
+
+x_train, x_test, y_train, y_test = train_test_split(xreshape, y, test_size=0.2, random_state=85) #Novo metodo de treino
+
+regr = linear_model.LinearRegression()
+regr.fit(x_train, y_train)
+y_pred = regr.predict(x_test)
+print("Coefficients: \n", regr.coef_)
+
+# Mean Squred Error
+mse = mean_squared_error(y_test, y_pred)
+print('Mean squared error(Testing) :', round(mse, 4))
+
+# Root Mean Squared Error
+rmsq = sqrt(mean_squared_error(y_test, y_pred))
+print('Root mean squared error(Testing) :', round(rmsq, 4))
+
+
+plt.scatter(x,y,color="orange")
+plt.plot(x_test, y_pred, color="blue", linewidth=1)
+plt.xlabel("Ano")
+plt.ylabel("Temperatura Minima Celsius")
+future_predictions = regr.predict(dateList)
+print("Future Predictions: \n",future_predictions)
+plt.plot(dateList,future_predictions,color="red", linewidth=1)
+plt.show()
+
+sns.set(rc={'figure.figsize':(20,10)}) # O quanto a temperatura esperada varia da temperatura media
+plt.plot(y_pred[:200], label='Predicted', color='blue')
+plt.plot(y_test[:200], label='Actual', color='red')
+plt.xlabel('x - axis')
+plt.ylabel('y - axis')
+plt.title('Predicitons vs Actual')
+plt.legend()
+plt.show()
+
+#Terra e  Oceano
+df = pd.read_csv('GlobalTemperatures.csv',parse_dates=['date'])
+DateColumn = df['date']
+df = df[df['LandAndOceanAverageTemperature'].notna()] #Retina os NaN da temperatura
+df_columns = df.columns #Pega o nome das colunas
+TemperatureColumn = df['LandAndOceanAverageTemperature']
+columns = df.columns #Faz uma lista com as colunas
+
+X =df.groupby(df.date.dt.year)['LandAndOceanAverageTemperature'].mean()
+Y = X.tolist()
+X1 = X.index.tolist()
+
+x = np.array(X1)
+y = np.array(Y)
+
+xreshape=x.reshape(-1,1)
+
+x_train, x_test, y_train, y_test = train_test_split(xreshape, y, test_size=0.2, random_state=85) #Novo metodo de treino
+
+regr = linear_model.LinearRegression()
+regr.fit(x_train, y_train)
+y_pred = regr.predict(x_test)
+print("Coefficients: \n", regr.coef_)
+
+# Mean Squred Error
+mse = mean_squared_error(y_test, y_pred)
+print('Mean squared error(Testing) :', round(mse, 4))
+
+# Root Mean Squared Error
+rmsq = sqrt(mean_squared_error(y_test, y_pred))
+print('Root mean squared error(Testing) :', round(rmsq, 4))
+
+
+plt.scatter(x,y,color="orange")
+plt.plot(x_test, y_pred, color="blue", linewidth=1)
+plt.xlabel("Ano")
+plt.ylabel("Temperatura Terra e Oceano Celsius")
+future_predictions = regr.predict(dateList)
+print("Future Predictions: \n",future_predictions)
+plt.plot(dateList,future_predictions,color="red", linewidth=1)
+plt.show()
+
+sns.set(rc={'figure.figsize':(20,10)}) # O quanto a temperatura esperada varia da temperatura media
+plt.plot(y_pred[:200], label='Predicted', color='blue')
+plt.plot(y_test[:200], label='Actual', color='red')
+plt.xlabel('x - axis')
+plt.ylabel('y - axis')
+plt.title('Predicitons vs Actual')
+plt.legend()
+plt.show()
